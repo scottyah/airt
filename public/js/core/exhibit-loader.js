@@ -70,6 +70,8 @@ export class ExhibitLoader {
 
       // Initialize the exhibit
       if (exhibit.init) {
+        // Allow loading indicator to render first
+        await new Promise(resolve => setTimeout(resolve, 0));
         await exhibit.init();
       }
 

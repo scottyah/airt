@@ -39,15 +39,15 @@ export default class NeuralBloom {
     // Controls
     // Dynamically import OrbitControls
     try {
-        const { OrbitControls } = await import('/lib/OrbitControls.js');
-        this.controls = new OrbitControls(this.camera, this.renderer.domElement);
-        this.controls.enableDamping = true;
-        this.controls.dampingFactor = 0.05;
-        this.controls.screenSpacePanning = false;
-        this.controls.minDistance = 1.5;
-        this.controls.maxDistance = 10;
+      const { OrbitControls } = await import('/lib/OrbitControls.js?v=' + Date.now());
+      this.controls = new OrbitControls(this.camera, this.renderer.domElement);
+      this.controls.enableDamping = true;
+      this.controls.dampingFactor = 0.05;
+      this.controls.screenSpacePanning = false;
+      this.controls.minDistance = 1.5;
+      this.controls.maxDistance = 10;
     } catch (e) {
-        console.error("Failed to load OrbitControls:", e);
+      console.error("Failed to load OrbitControls:", e);
     }
   }
 
@@ -193,14 +193,14 @@ export default class NeuralBloom {
   }
 
   reset() {
-      if (this.mesh) {
-        this.mesh.rotation.set(0, 0, 0);
-        this.clock.start(); // Restart the clock
-      }
-      if(this.controls) {
-        this.controls.reset();
-      }
-      this.camera.position.z = 3;
+    if (this.mesh) {
+      this.mesh.rotation.set(0, 0, 0);
+      this.clock.start(); // Restart the clock
+    }
+    if (this.controls) {
+      this.controls.reset();
+    }
+    this.camera.position.z = 3;
   }
 
   togglePause() {
@@ -214,11 +214,11 @@ export default class NeuralBloom {
       this.container.removeChild(this.renderer.domElement);
     }
     if (this.mesh) {
-        this.mesh.geometry.dispose();
-        this.mesh.material.dispose();
+      this.mesh.geometry.dispose();
+      this.mesh.material.dispose();
     }
-    if(this.controls) {
-        this.controls.dispose();
+    if (this.controls) {
+      this.controls.dispose();
     }
     this.scene = null;
     this.camera = null;

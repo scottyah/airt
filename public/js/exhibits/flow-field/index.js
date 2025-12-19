@@ -29,8 +29,11 @@ export default class FlowFieldExhibit {
   }
 
   async init() {
-    // Dynamically import p5.js
-    const p5 = (await import('https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js')).default;
+    // Use globally loaded p5.js
+    if (!window.p5) {
+      throw new Error('p5.js library not loaded. Please ensure p5.js is included in index.html');
+    }
+    const p5 = window.p5;
 
     const sketch = (p) => {
       // Canvas setup

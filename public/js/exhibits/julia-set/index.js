@@ -63,8 +63,7 @@ export default class JuliaSetExhibit {
     // Create controls
     this.createControls();
 
-    // Initial render
-    this.render();
+    // Initial render will happen in start()
   }
 
   createFPSCounter() {
@@ -380,8 +379,11 @@ export default class JuliaSetExhibit {
 
   start() {
     this.isRunning = true;
-    this.render();
-    this.startAnimation();
+    // Render asynchronously to avoid blocking
+    requestAnimationFrame(() => {
+      this.render();
+      this.startAnimation();
+    });
   }
 
   stop() {

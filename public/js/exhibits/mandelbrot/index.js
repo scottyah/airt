@@ -45,8 +45,7 @@ export default class MandelbrotExhibit {
     // Create controls
     this.createControls();
 
-    // Initial render
-    this.render();
+    // Initial render will happen in start()
   }
 
   createFPSCounter() {
@@ -299,7 +298,8 @@ export default class MandelbrotExhibit {
 
   start() {
     this.isRunning = true;
-    this.render();
+    // Render asynchronously to avoid blocking
+    requestAnimationFrame(() => this.render());
   }
 
   stop() {

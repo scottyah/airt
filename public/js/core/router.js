@@ -132,12 +132,23 @@ class Router {
       // Show exhibit view
       this.galleryView.style.display = 'none';
       this.exhibitView.style.display = 'flex';
-      this.hideLoading();
 
-      // Start the exhibit
-      if (this.currentExhibit.start) {
-        this.currentExhibit.start();
-      }
+      // Wait for layout to settle before starting exhibit
+      // This ensures the container has proper dimensions
+      requestAnimationFrame(() => {
+        // Recalculate dimensions now that view is visible
+        if (this.currentExhibit.resize) {
+          this.currentExhibit.resize();
+        }
+
+        // Start the exhibit
+        if (this.currentExhibit.start) {
+          this.currentExhibit.start();
+        }
+
+        // Hide loading after exhibit starts rendering
+        setTimeout(() => this.hideLoading(), 50);
+      });
 
     } catch (error) {
       console.error('Error loading exhibit:', error);
