@@ -1,0 +1,20 @@
+{
+  "id": "voronoi-art",
+  "title": "Voronoi Cellular Patterns",
+  "description": "Organic cellular structures emerge from mathematical partitioning. Watch as seed points slowly drift, causing cells to grow, shrink, and merge in an endless dance of territorial boundaries.",
+  "category": "generative",
+  "library": "p5",
+  "thumbnail": "/assets/thumbnails/voronoi-art.svg",
+  "tags": ["generative", "voronoi", "cellular", "animated"],
+  "instructions": [
+    "Click to add new cell points",
+    "Watch cells drift and morph",
+    "Each cell claims its territory",
+    "Colors shift based on cell properties"
+  ],
+  "controls": {
+    "animation": true,
+    "reset": true,
+    "cellCount": true
+  }
+}

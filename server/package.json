@@ -1,0 +1,14 @@
+{
+  "name": "airt-server",
+  "version": "1.0.0",
+  "description": "Express server for AIRT website",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "compression": "^1.7.4"
+  }
+}

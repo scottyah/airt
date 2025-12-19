@@ -1,0 +1,20 @@
+{
+  "id": "mandelbrot",
+  "title": "Mandelbrot Set Explorer",
+  "description": "Dive into the infinite complexity of the Mandelbrot set. Click to zoom in, revealing endless self-similar patterns and intricate mathematical beauty at every scale.",
+  "category": "fractal",
+  "library": "canvas",
+  "thumbnail": "/assets/thumbnails/mandelbrot.svg",
+  "tags": ["fractal", "mathematics", "interactive", "infinite-zoom"],
+  "instructions": [
+    "Click anywhere to zoom in on that point",
+    "Use the color slider to cycle through color palettes",
+    "Press R to reset to the initial view",
+    "Watch the iteration counter to see computational depth"
+  ],
+  "controls": {
+    "zoom": true,
+    "color": true,
+    "reset": true
+  }
+}

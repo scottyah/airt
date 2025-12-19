@@ -1,0 +1,15 @@
+{
+  "id": "flow-field",
+  "title": "Perlin Noise Flow Field",
+  "description": "Ten thousand particles dance through an invisible force field governed by Perlin noise. Move your mouse to disturb the flow and create swirling patterns of organized chaos.",
+  "category": "generative",
+  "library": "p5",
+  "thumbnail": "/assets/thumbnails/flow-field.svg",
+  "tags": ["generative", "particles", "perlin-noise", "interactive"],
+  "instructions": [
+    "Move mouse to disturb the flow",
+    "Watch particles follow invisible forces",
+    "Press R to reset particle positions",
+    "Particles leave colorful trails"
+  ]
+}

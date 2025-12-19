@@ -1,0 +1,104 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: airt
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: airt-svc
+  namespace: airt
+spec:
+  ports:
+    - port: 80
+      targetPort: 3000
+      protocol: TCP
+      name: http
+  selector:
+    app: airt
+  type: ClusterIP
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: airt-dep
+  namespace: airt
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: airt
+  template:
+    metadata:
+      labels:
+        app: airt
+    spec:
+      containers:
+        - name: airt
+          image: harbor.scottyah.com/scottyah/airt:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+              name: http
+              protocol: TCP
+          env:
+            - name: NODE_ENV
+              value: "production"
+            - name: PORT
+              value: "3000"
+            - name: HOSTNAME
+              value: "0.0.0.0"
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "250m"
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 3000
+            initialDelaySeconds: 10
+            periodSeconds: 30
+            timeoutSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 3000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            timeoutSeconds: 3
+      imagePullSecrets:
+        - name: harborcred
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: airt-ingress
+  namespace: airt
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.tls: "true"
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  ingressClassName: traefik
+  tls:
+    - hosts:
+        - airt.scottyah.com
+      secretName: scottyah-tls
+  rules:
+    - host: airt.scottyah.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: airt-svc
+                port:
+                  number: 80

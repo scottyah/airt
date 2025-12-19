@@ -1,0 +1,15 @@
+{
+  "id": "particle-galaxy",
+  "title": "Gravitational Particle Galaxy",
+  "description": "One hundred thousand points of light swirl in a cosmic dance, bound by simulated gravity. Watch spiral arms form, stars orbit, and the galaxy slowly rotate in the void of mathematical space.",
+  "category": "3d",
+  "library": "three",
+  "thumbnail": "/assets/thumbnails/particle-galaxy.svg",
+  "tags": ["3d", "particles", "gravity", "space"],
+  "instructions": [
+    "Drag to rotate view",
+    "Scroll to zoom",
+    "Watch spiral arms form",
+    "Each particle follows gravitational physics"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "id": "lorenz-attractor",
+  "title": "Lorenz Attractor - Chaos Butterfly",
+  "description": "The butterfly of chaos theory comes to life. Watch a particle trace the iconic strange attractor through 3D space, never repeating yet always constrained, demonstrating deterministic chaos.",
+  "category": "3d",
+  "library": "three",
+  "thumbnail": "/assets/thumbnails/lorenz-attractor.svg",
+  "tags": ["3d", "chaos-theory", "attractor", "physics"],
+  "instructions": [
+    "Drag to rotate the camera",
+    "Scroll to zoom in/out",
+    "Watch the chaos butterfly emerge",
+    "Particle traces never repeat but follow the attractor"
+  ],
+  "controls": {
+    "rotation": true,
+    "zoom": true,
+    "reset": true
+  }
+}

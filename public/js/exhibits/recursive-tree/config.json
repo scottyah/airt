@@ -1,0 +1,15 @@
+{
+  "id": "recursive-tree",
+  "title": "Fractal Tree Garden",
+  "description": "Watch nature's recursive beauty unfold as L-system fractals generate organic branching structures. Gentle wind animation brings the mathematical forest to life.",
+  "category": "generative",
+  "library": "p5",
+  "thumbnail": "/assets/thumbnails/recursive-tree.svg",
+  "tags": ["fractal", "l-system", "nature", "recursive"],
+  "instructions": [
+    "Watch the tree sway in the wind",
+    "Branches follow fractal patterns",
+    "Each level splits into smaller branches",
+    "Mathematical beauty meets nature"
+  ]
+}

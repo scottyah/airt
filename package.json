@@ -1,0 +1,16 @@
+{
+  "name": "airt",
+  "version": "1.0.0",
+  "description": "AI-Generated Interactive Visual Art Website",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "dev": "node --watch server/server.js"
+  },
+  "keywords": ["art", "fractals", "generative-art", "webgl", "three.js", "p5.js"],
+  "author": "AI Generated",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

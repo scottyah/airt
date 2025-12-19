@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AI-Generated Interactive Visual Art - Explore fractals, generative art, and 3D visualizations">
+  <meta name="keywords" content="fractals, generative art, WebGL, three.js, p5.js, interactive art, mandelbrot, julia set">
+  <title>AIRT - AI-Generated Visual Art</title>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/gallery.css">
+  <link rel="stylesheet" href="/css/exhibit.css">
+
+  <!-- Preconnect to CDNs for faster loading -->
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+</head>
+<body>
+  <!-- App Container -->
+  <div id="app">
+    <!-- Gallery View (Landing Page) -->
+    <div id="gallery-view" class="view">
+      <header class="gallery-header">
+        <h1>AIRT</h1>
+        <p class="subtitle">AI-Generated Interactive Visual Art</p>
+      </header>
+
+      <div class="gallery-controls">
+        <input type="text" id="search-input" placeholder="Search exhibits..." class="search-box">
+        <div class="filter-buttons" id="category-filters">
+          <button class="filter-btn active" data-category="all">All</button>
+          <button class="filter-btn" data-category="fractal">Fractals</button>
+          <button class="filter-btn" data-category="generative">Generative</button>
+          <button class="filter-btn" data-category="3d">3D</button>
+        </div>
+      </div>
+
+      <div id="gallery-grid" class="gallery-grid">
+        <!-- Gallery cards will be dynamically loaded here -->
+      </div>
+
+      <footer class="gallery-footer">
+        <p>All art generated and coded by AI &bull; Explore, interact, enjoy</p>
+      </footer>
+    </div>
+
+    <!-- Exhibit View -->
+    <div id="exhibit-view" class="view" style="display: none;">
+      <div class="exhibit-header">
+        <button id="back-btn" class="back-button" aria-label="Back to gallery">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 12H5M12 19l-7-7 7-7"/>
+          </svg>
+          <span>Gallery</span>
+        </button>
+        <h2 id="exhibit-title">Exhibit</h2>
+        <button id="info-btn" class="info-button" aria-label="Show info">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="16" x2="12" y2="12"/>
+            <line x1="12" y1="8" x2="12.01" y2="8"/>
+          </svg>
+        </button>
+      </div>
+
+      <div id="exhibit-container" class="exhibit-container">
+        <!-- Exhibit canvas/content will be loaded here -->
+      </div>
+
+      <div id="exhibit-controls" class="exhibit-controls">
+        <!-- Dynamic controls will be added here per exhibit -->
+      </div>
+
+      <div id="exhibit-info" class="exhibit-info" style="display: none;">
+        <div class="info-content">
+          <button class="info-close" id="info-close">&times;</button>
+          <h3 id="info-title">Exhibit Info</h3>
+          <p id="info-description"></p>
+          <div id="info-instructions"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Loading Indicator -->
+    <div id="loading" class="loading" style="display: none;">
+      <div class="spinner"></div>
+      <p>Loading exhibit...</p>
+    </div>
+  </div>
+
+  <!-- External Libraries (CDN with fallback) -->
+  <!-- Three.js for 3D graphics -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r158/three.min.js"
+          onerror="this.src='/lib/three.min.js'"></script>
+
+  <!-- p5.js for creative coding -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"
+          onerror="this.src='/lib/p5.min.js'"></script>
+
+  <!-- dat.GUI for runtime controls -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.9/dat.gui.min.js"
+          onerror="this.src='/lib/dat.gui.min.js'"></script>
+
+  <!-- Core Application Scripts (ES6 Modules) -->
+  <script type="module" src="/js/core/router.js"></script>
+  <script type="module" src="/js/gallery.js"></script>
+
+  <!-- Keyboard Shortcuts Helper -->
+  <div id="keyboard-hint" class="keyboard-hint">
+    <kbd>ESC</kbd> Gallery &bull; <kbd>Space</kbd> Pause &bull; <kbd>R</kbd> Reset
+  </div>
+</body>
+</html>

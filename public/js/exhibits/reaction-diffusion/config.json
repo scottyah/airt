@@ -1,0 +1,21 @@
+{
+  "id": "reaction-diffusion",
+  "title": "Reaction-Diffusion Patterns",
+  "description": "The Gray-Scott model reveals how simple chemical reactions create complex patterns found in nature: animal spots, coral growth, and cell development. Watch mathematics become biology.",
+  "category": "generative",
+  "library": "canvas",
+  "thumbnail": "/assets/thumbnails/reaction-diffusion.svg",
+  "tags": ["simulation", "gray-scott", "patterns", "biology"],
+  "instructions": [
+    "Watch patterns emerge from chemical reactions",
+    "Click to seed new pattern centers",
+    "Spots, stripes, or chaos - it's all mathematics",
+    "Different areas show different pattern type"
+  ],
+  "controls": {
+    "feedRate": true,
+    "killRate": true,
+    "speed": true,
+    "reset": true
+  }
+}

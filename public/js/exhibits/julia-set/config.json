@@ -1,0 +1,20 @@
+{
+  "id": "julia-set",
+  "title": "Julia Set Explorer",
+  "description": "Explore the Julia set fractal family. Watch mesmerizing patterns morph as complex parameters change. Each point creates a unique universe of mathematical beauty.",
+  "category": "fractal",
+  "library": "canvas",
+  "thumbnail": "/assets/thumbnails/julia-set.svg",
+  "tags": ["fractal", "mathematics", "animated", "complex-numbers"],
+  "instructions": [
+    "Watch the parameter animate automatically",
+    "Click to freeze/unfreeze animation",
+    "Use color slider to change palette",
+    "Press R to reset"
+  ],
+  "controls": {
+    "color": true,
+    "animation": true,
+    "reset": true
+  }
+}

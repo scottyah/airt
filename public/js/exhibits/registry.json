@@ -1,0 +1,36 @@
+{
+  "exhibits": [
+    {
+      "id": "mandelbrot",
+      "enabled": true
+    },
+    {
+      "id": "julia-set",
+      "enabled": true
+    },
+    {
+      "id": "flow-field",
+      "enabled": true
+    },
+    {
+      "id": "recursive-tree",
+      "enabled": true
+    },
+    {
+      "id": "voronoi-art",
+      "enabled": true
+    },
+    {
+      "id": "reaction-diffusion",
+      "enabled": true
+    },
+    {
+      "id": "lorenz-attractor",
+      "enabled": true
+    },
+    {
+      "id": "particle-galaxy",
+      "enabled": true
+    }
+  ]
+}
