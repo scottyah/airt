@@ -165,7 +165,9 @@ class Gallery {
       'fractal': 'Fractal',
       'generative': 'Generative',
       '3d': '3D',
-      'interactive': 'Interactive'
+      'interactive': 'Interactive',
+      'emotive': 'Emotive',
+      'synthesis': 'Synthesis'
     };
     return labels[category] || category;
   }

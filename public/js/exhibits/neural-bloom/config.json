@@ -1,0 +1,13 @@
+{
+  "id": "neural-bloom",
+  "title": "Neural Bloom",
+  "description": "A generative 3D sculpture of a flower that blooms and evolves, symbolizing the growth of AI.",
+  "category": "synthesis",
+  "library": "three",
+  "thumbnail": "/assets/thumbnails/neural-bloom.svg",
+  "tags": ["3D", "generative", "growth", "synthesis"],
+  "instructions": [
+    "Click and drag to rotate the sculpture.",
+    "Scroll to zoom in and out."
+  ]
+}

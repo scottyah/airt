@@ -1,0 +1,13 @@
+{
+  "id": "chromatic-pulse",
+  "title": "Chromatic Pulse",
+  "description": "A mesmerizing visualization of flowing, shifting colors. Represents the fluid nature of creativity.",
+  "category": "emotive",
+  "library": "p5",
+  "thumbnail": "/assets/thumbnails/chromatic-pulse.svg",
+  "tags": ["color", "fluid", "dynamic", "emotive"],
+  "instructions": [
+    "Move your mouse to influence the color flow.",
+    "Click to generate a new color palette."
+  ]
+}
