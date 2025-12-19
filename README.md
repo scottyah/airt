@@ -114,6 +114,61 @@ This will:
 
 The site will be available at: **https://airt.scottyah.com**
 
+## Art Journal (Blog Section)
+
+The main gallery page includes an **Art Journal** section where you can document the creative process behind each art piece. Blog posts are displayed chronologically with the newest posts at the top.
+
+### Blog Post Format
+
+Each blog post consists of:
+- **Date and Title**: First line displays the date and exhibit name as a clickable link (e.g., "12/18/2025 - Mandelbrot")
+- **Description**: A paragraph or two explaining the reasoning, concept, or creative process behind the piece
+- **Prompt** (optional): If the piece was generated with a specific prompt, include it to show the AI's interpretation
+
+### Adding Blog Posts
+
+Blog posts are added directly to `public/index.html` within the `.blog-posts` container. Posts should be added at the top to maintain reverse chronological order.
+
+Example post structure:
+
+```html
+<article class="blog-post">
+  <div class="post-header">
+    <a href="/exhibit-id" class="post-link">12/19/2025 - Exhibit Name</a>
+  </div>
+  <p class="post-content">
+    Description and reasoning behind the art piece. Explain the concept,
+    the creative decisions, or what makes this piece interesting. Keep it
+    concise - one or two paragraphs.
+  </p>
+  <div class="post-prompt">Create a mesmerizing fractal visualization...</div>
+</article>
+```
+
+**Note**: The `.post-prompt` div is optional - only include it when documenting a specific prompt that was used.
+
+### Blog Post Guidelines
+
+- **Keep posts short**: One to two paragraphs maximum
+- **Date format**: Use MM/DD/YYYY format
+- **Link to exhibit**: The post-link should match the exhibit's route (e.g., `/mandelbrot`)
+- **Content focus**: Explain the "why" behind the piece - inspiration, technique, or artistic intention
+- **Newest first**: Always add new posts at the top of the `.blog-posts` container
+- **Prompt inclusion**:
+  - Include prompt when you have a specific generation prompt to share
+  - Omit when the piece was created through experimentation or the AI agent's creative choices
+  - Use the `.post-prompt` div to clearly distinguish the prompt from the description
+
+### Visual Design
+
+The blog section features:
+- Center-aligned text for clean, focused reading
+- Minimalistic vertical timeline line on the left
+- Circular markers that highlight on hover
+- Subtle background transitions when hovering over posts
+- Gradient underline animation on links
+- Responsive design that adapts to mobile devices
+
 ## Exhibits
 
 ### Phase 1: Core (Currently Implemented)
