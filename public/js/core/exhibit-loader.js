@@ -49,6 +49,9 @@ export class ExhibitLoader {
         return null;
       }
 
+      // Load dependencies based on config
+      await this.loadDependencies(config);
+
       // Clear container
       this.container.innerHTML = '';
 
@@ -126,5 +129,63 @@ export class ExhibitLoader {
 
   getExhibits() {
     return this.registry ? this.registry.exhibits : [];
+  }
+
+  async loadDependencies(config) {
+    const dependencies = {
+      p5: {
+        src: 'https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js',
+        fallback: '/lib/p5.min.js',
+        id: 'p5-script'
+      },
+      dat: {
+        src: 'https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.9/dat.gui.min.js',
+        fallback: '/lib/dat.gui.min.js',
+        id: 'dat-gui-script'
+      }
+    };
+
+    const promises = [];
+
+    // Check for p5.js
+    if (config.library === 'p5') {
+      promises.push(this.loadScript(dependencies.p5));
+    }
+
+    // Check for dat.GUI (can be used with any library)
+    if (config.controls === 'dat.gui') {
+      promises.push(this.loadScript(dependencies.dat));
+    }
+
+    await Promise.all(promises);
+  }
+
+  loadScript({ src, fallback, id }) {
+    return new Promise((resolve, reject) => {
+      // If script already loaded, resolve immediately
+      if (document.getElementById(id)) {
+        resolve();
+        return;
+      }
+
+      const script = document.createElement('script');
+      script.id = id;
+      script.src = src;
+      script.defer = true;
+      script.onload = resolve;
+      script.onerror = () => {
+        // Fallback to local copy on CDN error
+        console.warn(`Failed to load script from CDN: ${src}. Falling back to local copy.`);
+        const fallbackScript = document.createElement('script');
+        fallbackScript.id = id;
+        fallbackScript.src = fallback;
+        fallbackScript.defer = true;
+        fallbackScript.onload = resolve;
+        fallbackScript.onerror = reject;
+        document.head.appendChild(fallbackScript);
+        script.remove(); // Clean up the failed script tag
+      };
+      document.head.appendChild(script);
+    });
   }
 }
