@@ -1,2 +1,5 @@
 # Server dependencies
 /server/node_modules
+
+# Logs
+server.log
