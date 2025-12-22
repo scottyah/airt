@@ -4,6 +4,7 @@ export class ExhibitLoader {
   constructor() {
     this.registry = null;
     this.container = document.getElementById('exhibit-container');
+    this.loadedScripts = new Set();
     this.loadRegistry();
   }
 
@@ -48,6 +49,9 @@ export class ExhibitLoader {
       if (!config) {
         return null;
       }
+
+      // Dynamically load libraries if needed
+      await this.loadDependencies(config);
 
       // Clear container
       this.container.innerHTML = '';
@@ -126,5 +130,86 @@ export class ExhibitLoader {
 
   getExhibits() {
     return this.registry ? this.registry.exhibits : [];
+  }
+
+  async loadDependencies(config) {
+    const promises = [];
+
+    // p5.js
+    if (config.library === 'p5' && !this.loadedScripts.has('p5')) {
+      promises.push(this.loadScript('p5', 'https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js', '/lib/p5.min.js', 'p5'));
+    }
+
+    // dat.GUI
+    if (config.controls === 'dat.gui' && !this.loadedScripts.has('dat.gui')) {
+      promises.push(this.loadScript('dat.gui', 'https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.9/dat.gui.min.js', '/lib/dat.gui.min.js', 'dat'));
+    }
+
+    await Promise.all(promises);
+  }
+
+  loadScript(id, cdnUrl, fallbackUrl, globalName) {
+    return new Promise((resolve, reject) => {
+      if (this.loadedScripts.has(id)) {
+        // If script is already loaded, check for global again just in case
+        if (globalName && !window[globalName]) {
+          // This case should be rare, but handles if the script tag is there but didn't execute
+          this.pollForGlobal(globalName, resolve, () => reject(new Error(`${globalName} not found after script was loaded.`)));
+        } else {
+          resolve();
+        }
+        return;
+      }
+
+      const onScriptLoad = () => {
+        this.loadedScripts.add(id);
+        if (globalName) {
+          this.pollForGlobal(globalName, resolve, () => reject(new Error(`${globalName} not found after script load.`)));
+        } else {
+          resolve();
+        }
+      };
+
+      const script = document.createElement('script');
+      script.src = cdnUrl;
+
+      script.onload = () => {
+        console.log(`Loaded ${id} from CDN`);
+        onScriptLoad();
+      };
+
+      script.onerror = () => {
+        console.warn(`CDN for ${id} failed, loading fallback...`);
+        const fallbackScript = document.createElement('script');
+        fallbackScript.src = fallbackUrl;
+
+        fallbackScript.onload = () => {
+          console.log(`Loaded ${id} from fallback`);
+          onScriptLoad();
+        };
+
+        fallbackScript.onerror = () => {
+          console.error(`Failed to load ${id} from CDN and fallback.`);
+          reject(new Error(`Failed to load script: ${id}`));
+        };
+
+        document.head.appendChild(fallbackScript);
+      };
+
+      document.head.appendChild(script);
+    });
+  }
+
+  pollForGlobal(globalName, onFound, onTimeout, timeout = 5000) {
+    const startTime = Date.now();
+    const interval = setInterval(() => {
+      if (window[globalName]) {
+        clearInterval(interval);
+        onFound();
+      } else if (Date.now() - startTime > timeout) {
+        clearInterval(interval);
+        onTimeout();
+      }
+    }, 50);
   }
 }
