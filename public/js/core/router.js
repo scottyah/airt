@@ -133,6 +133,11 @@ class Router {
       this.galleryView.style.display = 'none';
       this.exhibitView.style.display = 'flex';
 
+      // Initialize the exhibit *after* its container is visible
+      if (this.currentExhibit.init) {
+        await this.currentExhibit.init();
+      }
+
       // Wait for layout to settle before starting exhibit
       // This ensures the container has proper dimensions
       requestAnimationFrame(() => {

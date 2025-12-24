@@ -48,12 +48,13 @@ export default class FlowFieldExhibit {
         this.initializeParticles(p);
 
         // Mouse tracking
-        canvas.addEventListener('mousemove', (e) => {
+        // NOTE: p.createCanvas returns a renderer object, the actual <canvas> element is .canvas
+        canvas.canvas.addEventListener('mousemove', (e) => {
           this.mousePos.x = e.offsetX;
           this.mousePos.y = e.offsetY;
         });
 
-        canvas.addEventListener('mouseleave', () => {
+        canvas.canvas.addEventListener('mouseleave', () => {
           this.mousePos.x = -1000;
           this.mousePos.y = -1000;
         });
