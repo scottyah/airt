@@ -4,7 +4,101 @@ export class ExhibitLoader {
   constructor() {
     this.registry = null;
     this.container = document.getElementById('exhibit-container');
+    this.loadedScripts = new Map(); // Keep track of loaded scripts
     this.loadRegistry();
+  }
+
+  /**
+   * Dynamically loads a script and returns a promise.
+   * Prevents re-downloading if the script is already loaded.
+   * @param {string} src - The primary URL for the script.
+   * @param {string} fallbackSrc - A fallback URL if the primary fails.
+   * @param {string} globalName - The global variable name to wait for (e.g., 'p5').
+   * @returns {Promise<void>}
+   */
+  loadScript(src, fallbackSrc = null, globalName = null) {
+    // If the script is already loaded or is being loaded, return the existing promise
+    if (this.loadedScripts.has(src)) {
+      return this.loadedScripts.get(src);
+    }
+
+    const promise = new Promise((resolve, reject) => {
+      const primaryScript = document.createElement('script');
+      primaryScript.defer = true;
+
+      const handleLoad = async (event) => {
+        const loadedSrc = event.target.src;
+        console.log(`Loaded script: ${loadedSrc}`);
+        if (globalName) {
+          try {
+            await this.waitForGlobal(globalName);
+            console.log(`Global '${globalName}' is now available.`);
+            resolve();
+          } catch (error) {
+            reject(error);
+          }
+        } else {
+          resolve();
+        }
+      };
+
+      const handleError = () => {
+        console.error(`Failed to load script: ${src}`);
+        primaryScript.remove(); // Clean up the failed script tag
+
+        if (fallbackSrc) {
+          console.log(`Attempting fallback: ${fallbackSrc}`);
+          const fallbackScript = document.createElement('script');
+          fallbackScript.defer = true;
+          fallbackScript.src = fallbackSrc;
+          fallbackScript.onload = handleLoad;
+          fallbackScript.onerror = () => {
+            fallbackScript.remove();
+            console.error(`Failed to load fallback script: ${fallbackSrc}`);
+            reject(new Error(`Failed to load script from ${src} and ${fallbackSrc}`));
+          };
+          document.head.appendChild(fallbackScript);
+        } else {
+          reject(new Error(`Failed to load script: ${src}`));
+        }
+      };
+
+      primaryScript.onload = handleLoad;
+      primaryScript.onerror = handleError;
+      primaryScript.src = src;
+
+      document.head.appendChild(primaryScript);
+    });
+
+    this.loadedScripts.set(src, promise);
+    return promise;
+  }
+
+  /**
+   * Waits for a global variable to be defined on the window object.
+   * Useful for scripts that don't have a clear onload signal.
+   * @param {string} globalName - The name of the global variable.
+   * @param {number} timeout - The maximum time to wait in ms.
+   * @param {number} interval - The interval to check in ms.
+   * @returns {Promise<void>}
+   */
+  waitForGlobal(globalName, timeout = 5000, interval = 50) {
+    return new Promise((resolve, reject) => {
+      let elapsedTime = 0;
+      const check = () => {
+        if (window[globalName]) {
+          resolve();
+        } else {
+          elapsedTime += interval;
+          if (elapsedTime >= timeout) {
+            reject(new Error(`Timed out waiting for global: ${globalName}`));
+          } else {
+            setTimeout(check, interval);
+          }
+        }
+      };
+      check();
+    });
   }
 
   async loadRegistry() {
@@ -48,6 +142,24 @@ export class ExhibitLoader {
       if (!config) {
         return null;
       }
+
+      // Load required libraries based on config
+      const libraryPromises = [];
+      if (config.library === 'p5') {
+        libraryPromises.push(this.loadScript(
+          'https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js',
+          '/lib/p5.min.js',
+          'p5'
+        ));
+      }
+      if (config.controls === 'dat.gui') {
+        libraryPromises.push(this.loadScript(
+          'https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.9/dat.gui.min.js',
+          '/lib/dat.gui.min.js',
+          'dat'
+        ));
+      }
+      await Promise.all(libraryPromises);
 
       // Clear container
       this.container.innerHTML = '';
