@@ -1,5 +1,16 @@
 // Gallery View - Landing page with exhibit cards
 
+// Debounce utility
+function debounce(func, delay) {
+  let timeoutId;
+  return function(...args) {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => {
+      func.apply(this, args);
+    }, delay);
+  };
+}
+
 class Gallery {
   constructor() {
     this.exhibits = [];
@@ -59,10 +70,12 @@ class Gallery {
   setupEventListeners() {
     // Search input
     if (this.searchInput) {
-      this.searchInput.addEventListener('input', (e) => {
+      // ⚡ Bolt: Debounce search input to prevent re-rendering on every keystroke.
+      // This improves UI responsiveness on text entry.
+      this.searchInput.addEventListener('input', debounce((e) => {
         this.searchQuery = e.target.value.toLowerCase();
         this.filterExhibits();
-      });
+      }, 250)); // 250ms delay
     }
 
     // Category filters
