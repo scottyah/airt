@@ -1,5 +1,24 @@
 // Gallery View - Landing page with exhibit cards
 
+/**
+ * ⚡ Bolt: Debounce implementation to delay function execution.
+ * This prevents rapid-fire calls during continuous events like typing.
+ * A generic utility function, moved out of the Gallery class for better separation of concerns.
+ * @param {Function} func The function to debounce.
+ * @param {number} delay The debounce delay in milliseconds.
+ * @returns {Function} A new debounced function.
+ */
+function debounce(func, delay = 250) {
+  let timeoutId;
+  return function(...args) {
+    const context = this;
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => {
+      func.apply(context, args);
+    }, delay);
+  };
+}
+
 class Gallery {
   constructor() {
     this.exhibits = [];
@@ -57,11 +76,15 @@ class Gallery {
   }
 
   setupEventListeners() {
+    // ⚡ Bolt: Debounce search input to prevent re-rendering on every keystroke.
+    // This improves UI responsiveness by waiting for the user to pause typing.
+    const debouncedFilter = debounce(() => this.filterExhibits(), 300);
+
     // Search input
     if (this.searchInput) {
       this.searchInput.addEventListener('input', (e) => {
         this.searchQuery = e.target.value.toLowerCase();
-        this.filterExhibits();
+        debouncedFilter();
       });
     }
 
