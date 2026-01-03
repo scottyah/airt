@@ -1,5 +1,21 @@
 // Gallery View - Landing page with exhibit cards
 
+/**
+ * ⚡ Bolt: Debounce Optimization
+ * Prevents a function from firing too rapidly.
+ * On the search input, this avoids expensive DOM re-renders on every keystroke,
+ * improving UI responsiveness by only filtering after the user stops typing.
+ * @param {Function} func The function to debounce.
+ * @param {number} delay The debounce delay in milliseconds.
+ */
+function debounce(func, delay = 300) {
+  let timeoutId;
+  return function(...args) {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => func.apply(this, args), delay);
+  };
+}
+
 class Gallery {
   constructor() {
     this.exhibits = [];
@@ -59,10 +75,10 @@ class Gallery {
   setupEventListeners() {
     // Search input
     if (this.searchInput) {
-      this.searchInput.addEventListener('input', (e) => {
+      this.searchInput.addEventListener('input', debounce((e) => {
         this.searchQuery = e.target.value.toLowerCase();
         this.filterExhibits();
-      });
+      }));
     }
 
     // Category filters
