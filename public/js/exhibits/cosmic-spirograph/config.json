@@ -1,0 +1,19 @@
+{
+  "id": "cosmic-spirograph",
+  "title": "Cosmic Spirograph",
+  "description": "Orbiting arms trace intricate geometric patterns reminiscent of celestial mechanics. Watch as simple circular motion creates stunning complexity.",
+  "category": "interactive",
+  "library": "canvas",
+  "thumbnail": "/assets/thumbnails/cosmic-spirograph.svg",
+  "tags": ["spirograph", "geometric", "orbital", "interactive", "patterns"],
+  "instructions": [
+    "Watch the spirograph draw itself automatically.",
+    "Adjust the number of arms and their speed ratios to create new patterns.",
+    "Click anywhere to clear the trail and start fresh.",
+    "Press Space to pause/resume drawing."
+  ],
+  "controls": {
+    "pause": true,
+    "reset": true
+  }
+}
