@@ -1,3 +1,14 @@
+// Debounce utility to limit the rate at which a function gets called.
+function debounce(func, delay) {
+  let timeoutId;
+  return function(...args) {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => {
+      func.apply(this, args);
+    }, delay);
+  };
+}
+
 // Gallery View - Landing page with exhibit cards
 
 class Gallery {
@@ -10,6 +21,9 @@ class Gallery {
     this.galleryGrid = document.getElementById('gallery-grid');
     this.searchInput = document.getElementById('search-input');
     this.categoryFilters = document.getElementById('category-filters');
+
+    // Debounce filter method to improve performance on search input
+    this.debouncedFilterExhibits = debounce(() => this.filterExhibits(), 300);
 
     this.init();
   }
@@ -61,7 +75,8 @@ class Gallery {
     if (this.searchInput) {
       this.searchInput.addEventListener('input', (e) => {
         this.searchQuery = e.target.value.toLowerCase();
-        this.filterExhibits();
+        // Debounce the filtering to prevent re-rendering on every keystroke
+        this.debouncedFilterExhibits();
       });
     }
 
