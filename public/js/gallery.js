@@ -14,6 +14,22 @@ class Gallery {
     this.init();
   }
 
+  /**
+   * Debounce function to limit the rate at which a function gets called.
+   * @param {Function} func The function to debounce.
+   * @param {number} delay The debounce delay in milliseconds.
+   * @returns {Function} The debounced function.
+   */
+  debounce(func, delay = 250) {
+    let timeoutId;
+    return (...args) => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        func.apply(this, args);
+      }, delay);
+    };
+  }
+
   async init() {
     // Load exhibits from registry
     await this.loadExhibits();
@@ -59,10 +75,13 @@ class Gallery {
   setupEventListeners() {
     // Search input
     if (this.searchInput) {
-      this.searchInput.addEventListener('input', (e) => {
+      // Debounce the search input to avoid excessive re-renders
+      const debouncedFilter = this.debounce((e) => {
         this.searchQuery = e.target.value.toLowerCase();
         this.filterExhibits();
-      });
+      }, 300); // 300ms delay
+
+      this.searchInput.addEventListener('input', debouncedFilter);
     }
 
     // Category filters
