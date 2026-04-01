@@ -1,3 +1,13 @@
+// Debounce utility for search input to prevent excessive re-renders
+function debounce(func, delay) {
+  let timeout;
+  return function(...args) {
+    const context = this;
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func.apply(context, args), delay);
+  };
+}
+
 // Gallery View - Landing page with exhibit cards
 
 class Gallery {
@@ -59,10 +69,12 @@ class Gallery {
   setupEventListeners() {
     // Search input
     if (this.searchInput) {
-      this.searchInput.addEventListener('input', (e) => {
+      // ⚡ Bolt: Debounce search input to prevent excessive re-renders on every keystroke.
+      // This improves UI responsiveness by waiting for the user to stop typing before filtering.
+      this.searchInput.addEventListener('input', debounce((e) => {
         this.searchQuery = e.target.value.toLowerCase();
         this.filterExhibits();
-      });
+      }, 300));
     }
 
     // Category filters
