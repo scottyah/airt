@@ -1,5 +1,15 @@
 // Gallery View - Landing page with exhibit cards
 
+// Debounce function to limit the rate of function execution
+function debounce(func, delay) {
+  let timeout;
+  return function(...args) {
+    const context = this;
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func.apply(context, args), delay);
+  };
+}
+
 class Gallery {
   constructor() {
     this.exhibits = [];
@@ -59,9 +69,13 @@ class Gallery {
   setupEventListeners() {
     // Search input
     if (this.searchInput) {
+      // Debounce the filter function to avoid re-rendering on every keystroke
+      // This improves performance and user experience on slower devices.
+      const debouncedFilter = debounce(() => this.filterExhibits(), 300);
+
       this.searchInput.addEventListener('input', (e) => {
         this.searchQuery = e.target.value.toLowerCase();
-        this.filterExhibits();
+        debouncedFilter();
       });
     }
 
