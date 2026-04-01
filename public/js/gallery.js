@@ -1,5 +1,15 @@
-// Gallery View - Landing page with exhibit cards
+// Debounce utility to limit how often a function can run
+function debounce(func, delay = 300) {
+  let timeout;
+  return function(...args) {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      func.apply(this, args);
+    }, delay);
+  };
+}
 
+// Gallery View - Landing page with exhibit cards
 class Gallery {
   constructor() {
     this.exhibits = [];
@@ -57,12 +67,12 @@ class Gallery {
   }
 
   setupEventListeners() {
-    // Search input
+    // Search input with debounce to prevent re-rendering on every keystroke
     if (this.searchInput) {
-      this.searchInput.addEventListener('input', (e) => {
+      this.searchInput.addEventListener('input', debounce((e) => {
         this.searchQuery = e.target.value.toLowerCase();
         this.filterExhibits();
-      });
+      }, 300));
     }
 
     // Category filters
