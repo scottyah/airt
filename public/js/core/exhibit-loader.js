@@ -1,5 +1,88 @@
 // Exhibit Loader - Dynamically loads and manages exhibits
 
+const loadedScripts = new Map();
+
+/**
+ * Dynamically loads a script and returns a promise that resolves when it's ready.
+ * Handles fallbacks, prevents re-loading, and polls for library readiness.
+ * @param {string} primarySrc - The primary CDN URL.
+ * @param {string} fallbackSrc - The local fallback URL.
+ * @param {string} globalName - The name of the global variable to check (e.g., 'p5', 'dat').
+ * @returns {Promise<void>}
+ */
+function loadScript(primarySrc, fallbackSrc, globalName) {
+  // If script is already loaded or loading, return the existing promise
+  if (loadedScripts.has(primarySrc)) {
+    return loadedScripts.get(primarySrc);
+  }
+
+  // More robust check for pre-existing scripts
+  let isAlreadyLoaded = false;
+  if (globalName === 'p5') isAlreadyLoaded = typeof window.p5 === 'function';
+  else if (globalName === 'dat') isAlreadyLoaded = typeof window.dat === 'object' && typeof window.dat.GUI === 'function';
+  else if (globalName) isAlreadyLoaded = !!window[globalName];
+
+  if (isAlreadyLoaded) {
+    return Promise.resolve();
+  }
+
+  const promise = new Promise((resolve, reject) => {
+    const script = document.createElement('script');
+    script.src = primarySrc;
+    script.defer = true;
+
+    const onScriptLoad = () => {
+      // Poll for the global variable to ensure the library is fully initialized
+      if (globalName) {
+        const checkGlobal = () => {
+          let isReady = false;
+          if (globalName === 'p5') {
+            // p5.js is ready when the p5 constructor function exists
+            isReady = typeof window.p5 === 'function';
+          } else if (globalName === 'dat') {
+            // dat.gui is ready when the dat object and its GUI constructor exist
+            isReady = typeof window.dat === 'object' && typeof window.dat.GUI === 'function';
+          } else {
+            // Generic check for other libraries
+            isReady = !!window[globalName];
+          }
+
+          if (isReady) {
+            resolve();
+          } else {
+            setTimeout(checkGlobal, 50); // Check again in 50ms
+          }
+        };
+        checkGlobal();
+      } else {
+        resolve(); // No global to check, just resolve
+      }
+    };
+
+    const onScriptError = () => {
+      console.warn(`Failed to load script from ${primarySrc}. Retrying with fallback...`);
+      const fallbackScript = document.createElement('script');
+      fallbackScript.src = fallbackSrc;
+      fallbackScript.defer = true;
+      fallbackScript.onload = onScriptLoad;
+      fallbackScript.onerror = () => {
+        console.error(`Failed to load script from fallback ${fallbackSrc}`);
+        reject(new Error(`Script loading failed for ${primarySrc}`));
+      };
+      document.body.appendChild(fallbackScript);
+    };
+
+    script.onload = onScriptLoad;
+    script.onerror = onScriptError;
+
+    document.body.appendChild(script);
+  });
+
+  loadedScripts.set(primarySrc, promise);
+  return promise;
+}
+
+
 export class ExhibitLoader {
   constructor() {
     this.registry = null;
@@ -49,6 +132,27 @@ export class ExhibitLoader {
         return null;
       }
 
+      // ⚡ OPTIMIZATION: Conditionally load libraries only when needed.
+      // This avoids loading p5.js and dat.gui on the initial page load,
+      // improving gallery load time.
+      const scriptPromises = [];
+      if (config.library === 'p5') {
+        scriptPromises.push(loadScript(
+          'https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js',
+          '/lib/p5.min.js',
+          'p5'
+        ));
+      }
+      if (config.controls === 'dat.gui') {
+        scriptPromises.push(loadScript(
+          'https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.9/dat.gui.min.js',
+          '/lib/dat.gui.min.js',
+          'dat'
+        ));
+      }
+      await Promise.all(scriptPromises);
+
+
       // Clear container
       this.container.innerHTML = '';
 
@@ -67,13 +171,6 @@ export class ExhibitLoader {
       const exhibit = new ExhibitClass(this.container, config);
       exhibit.config = config;
       exhibit.id = exhibitId;
-
-      // Initialize the exhibit
-      if (exhibit.init) {
-        // Allow loading indicator to render first
-        await new Promise(resolve => setTimeout(resolve, 0));
-        await exhibit.init();
-      }
 
       // Handle window resize
       const resizeHandler = () => {
