@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="murm-sky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#100b26"/>
+      <stop offset="45%" style="stop-color:#2c1b4d"/>
+      <stop offset="70%" style="stop-color:#6e3160"/>
+      <stop offset="88%" style="stop-color:#c75e55"/>
+      <stop offset="100%" style="stop-color:#f2a65a"/>
+    </linearGradient>
+    <radialGradient id="murm-sun" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#ffd68c;stop-opacity:0.6"/>
+      <stop offset="40%" style="stop-color:#ffaa6e;stop-opacity:0.2"/>
+      <stop offset="100%" style="stop-color:#ffaa6e;stop-opacity:0"/>
+    </radialGradient>
+    <!-- Starling silhouette: a simple gull-wing stroke -->
+    <path id="murm-bird" d="M-5,1 Q-2,-3 0,0 Q2,-3 5,1" fill="none" stroke="#120b21" stroke-width="2" stroke-linecap="round"/>
+  </defs>
+  <rect width="400" height="400" fill="url(#murm-sky)"/>
+  <circle cx="248" cy="368" r="150" fill="url(#murm-sun)"/>
+  <!-- Stars in the upper sky -->
+  <g fill="#fffaeb">
+    <circle cx="38" cy="32" r="1.1" opacity="0.7"/>
+    <circle cx="112" cy="58" r="0.8" opacity="0.5"/>
+    <circle cx="201" cy="24" r="1.2" opacity="0.8"/>
+    <circle cx="290" cy="47" r="0.9" opacity="0.6"/>
+    <circle cx="352" cy="80" r="0.7" opacity="0.4"/>
+    <circle cx="68" cy="98" r="0.8" opacity="0.5"/>
+    <circle cx="166" cy="84" r="0.6" opacity="0.4"/>
+    <circle cx="330" cy="22" r="1" opacity="0.7"/>
+    <circle cx="246" cy="96" r="0.7" opacity="0.35"/>
+    <circle cx="22" cy="130" r="0.6" opacity="0.3"/>
+  </g>
+  <!-- The murmuration: a swooping cloud of starlings, denser at its heart -->
+  <g opacity="0.92">
+    <use href="#murm-bird" transform="translate(74,212) rotate(-18) scale(0.7)"/>
+    <use href="#murm-bird" transform="translate(96,196) rotate(-12) scale(0.85)"/>
+    <use href="#murm-bird" transform="translate(118,184) rotate(-8) scale(0.75)"/>
+    <use href="#murm-bird" transform="translate(108,214) rotate(-15) scale(0.95)"/>
+    <use href="#murm-bird" transform="translate(132,202) rotate(-6) scale(1.05)"/>
+    <use href="#murm-bird" transform="translate(148,188) rotate(-4) scale(0.8)"/>
+    <use href="#murm-bird" transform="translate(142,222) rotate(-10) scale(1.1)"/>
+    <use href="#murm-bird" transform="translate(162,206) rotate(0) scale(1.2)"/>
+    <use href="#murm-bird" transform="translate(178,192) rotate(4) scale(0.9)"/>
+    <use href="#murm-bird" transform="translate(172,226) rotate(-3) scale(1.15)"/>
+    <use href="#murm-bird" transform="translate(192,210) rotate(6) scale(1.25)"/>
+    <use href="#murm-bird" transform="translate(206,196) rotate(8) scale(1)"/>
+    <use href="#murm-bird" transform="translate(200,232) rotate(2) scale(1.2)"/>
+    <use href="#murm-bird" transform="translate(220,216) rotate(10) scale(1.3)"/>
+    <use href="#murm-bird" transform="translate(236,200) rotate(12) scale(0.95)"/>
+    <use href="#murm-bird" transform="translate(230,238) rotate(5) scale(1.1)"/>
+    <use href="#murm-bird" transform="translate(250,222) rotate(14) scale(1.15)"/>
+    <use href="#murm-bird" transform="translate(266,206) rotate(16) scale(0.85)"/>
+    <use href="#murm-bird" transform="translate(258,242) rotate(9) scale(1)"/>
+    <use href="#murm-bird" transform="translate(280,228) rotate(18) scale(0.9)"/>
+    <use href="#murm-bird" transform="translate(294,212) rotate(20) scale(0.7)"/>
+    <use href="#murm-bird" transform="translate(288,248) rotate(13) scale(0.8)"/>
+    <use href="#murm-bird" transform="translate(310,234) rotate(22) scale(0.65)"/>
+    <use href="#murm-bird" transform="translate(324,220) rotate(24) scale(0.55)"/>
+    <!-- Outliers above and below the main sweep -->
+    <use href="#murm-bird" transform="translate(126,160) rotate(-14) scale(0.5)"/>
+    <use href="#murm-bird" transform="translate(158,150) rotate(-6) scale(0.55)"/>
+    <use href="#murm-bird" transform="translate(196,144) rotate(2) scale(0.45)"/>
+    <use href="#murm-bird" transform="translate(238,152) rotate(10) scale(0.5)"/>
+    <use href="#murm-bird" transform="translate(276,164) rotate(16) scale(0.45)"/>
+    <use href="#murm-bird" transform="translate(118,252) rotate(-12) scale(0.55)"/>
+    <use href="#murm-bird" transform="translate(154,266) rotate(-4) scale(0.5)"/>
+    <use href="#murm-bird" transform="translate(196,276) rotate(4) scale(0.55)"/>
+    <use href="#murm-bird" transform="translate(240,272) rotate(12) scale(0.45)"/>
+    <use href="#murm-bird" transform="translate(58,182) rotate(-22) scale(0.45)"/>
+    <use href="#murm-bird" transform="translate(344,244) rotate(26) scale(0.4)"/>
+    <use href="#murm-bird" transform="translate(86,242) rotate(-18) scale(0.5)"/>
+    <use href="#murm-bird" transform="translate(316,190) rotate(20) scale(0.45)"/>
+  </g>
+</svg>

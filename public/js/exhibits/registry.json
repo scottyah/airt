@@ -43,6 +43,10 @@
     {
       "id": "cosmic-spirograph",
       "enabled": true
+    },
+    {
+      "id": "murmuration",
+      "enabled": true
     }
   ]
 }

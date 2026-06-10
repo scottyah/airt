@@ -1,0 +1,19 @@
+{
+  "id": "murmuration",
+  "title": "Murmuration",
+  "description": "A thousand starlings wheel across a dusk sky. Each bird follows three simple local rules, yet together they form a single breathtaking organism. Your cursor is the falcon.",
+  "category": "generative",
+  "library": "canvas",
+  "thumbnail": "/assets/thumbnails/murmuration.svg",
+  "tags": ["flocking", "boids", "emergence", "swarm", "starlings", "interactive"],
+  "instructions": [
+    "Move your cursor through the flock — the birds treat it as a hunting falcon and bend around it.",
+    "Click anywhere to send a shockwave rippling through the murmuration.",
+    "Adjust flock size, cohesion, and speed to change the character of the swarm.",
+    "Press Space to pause/resume, R to reset."
+  ],
+  "controls": {
+    "pause": true,
+    "reset": true
+  }
+}
