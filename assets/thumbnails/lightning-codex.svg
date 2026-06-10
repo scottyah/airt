@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="lc-sky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0b0d18"/>
+      <stop offset="35%" style="stop-color:#11142a"/>
+      <stop offset="80%" style="stop-color:#1a1d33"/>
+      <stop offset="100%" style="stop-color:#0a0b14"/>
+    </linearGradient>
+    <radialGradient id="lc-glow" cx="50%" cy="0%" r="80%">
+      <stop offset="0%" style="stop-color:#8278ff;stop-opacity:0.35"/>
+      <stop offset="100%" style="stop-color:#8278ff;stop-opacity:0"/>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#lc-sky)"/>
+  <rect width="400" height="240" fill="url(#lc-glow)"/>
+  <!-- Cloud deck -->
+  <path d="M-10,0 L410,0 L410,60 Q380,78 350,64 Q320,90 285,70 Q250,96 215,74 Q180,98 145,76 Q110,94 75,72 Q40,88 -10,66 Z" fill="#13152a"/>
+  <path d="M-10,0 L410,0 L410,40 Q370,60 330,48 Q290,72 250,54 Q210,76 170,58 Q130,74 90,56 Q50,68 -10,50 Z" fill="#1a1d36"/>
+  <!-- Faint formulas in the cloud -->
+  <g font-family="Georgia, serif" font-style="italic" fill="#969fff" text-anchor="middle">
+    <text x="90" y="38" font-size="13" opacity="0.4">∇·E = ρ/ε₀</text>
+    <text x="290" y="30" font-size="12" opacity="0.32">I ≈ 30 kA</text>
+    <text x="200" y="56" font-size="11" opacity="0.26">T ≈ 3×10⁴ K</text>
+    <text x="330" y="62" font-size="10" opacity="0.2">dn/dt = αn</text>
+  </g>
+  <!-- Main fractal bolt: halo, glow, core -->
+  <g fill="none" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M212,70 L196,118 L218,150 L188,196 L208,236 L184,282 L200,322 L192,358" stroke="#6e50ff" stroke-width="11" opacity="0.18"/>
+    <path d="M212,70 L196,118 L218,150 L188,196 L208,236 L184,282 L200,322 L192,358" stroke="#8caaff" stroke-width="5" opacity="0.45"/>
+    <path d="M212,70 L196,118 L218,150 L188,196 L208,236 L184,282 L200,322 L192,358" stroke="#ffffff" stroke-width="1.6" opacity="0.95"/>
+    <!-- Branches -->
+    <path d="M218,150 L258,188 L276,224" stroke="#8caaff" stroke-width="2.6" opacity="0.3"/>
+    <path d="M218,150 L258,188 L276,224" stroke="#ffffff" stroke-width="0.9" opacity="0.5"/>
+    <path d="M188,196 L150,238 L138,268" stroke="#8caaff" stroke-width="2.2" opacity="0.26"/>
+    <path d="M188,196 L150,238 L138,268" stroke="#ffffff" stroke-width="0.8" opacity="0.45"/>
+    <path d="M208,236 L240,278 L252,300" stroke="#8caaff" stroke-width="1.8" opacity="0.22"/>
+  </g>
+  <!-- Equation glyphs riding the core of the bolt -->
+  <g font-family="Georgia, serif" font-weight="700" fill="#ffffff" text-anchor="middle">
+    <text x="204" y="100" font-size="11" transform="rotate(72 204 100)" opacity="0.95">∇×B</text>
+    <text x="206" y="136" font-size="10" transform="rotate(58 206 136)" opacity="0.9">= μ₀J</text>
+    <text x="202" y="176" font-size="11" transform="rotate(118 202 176)" opacity="0.95">E ≈ 3×10⁶</text>
+    <text x="198" y="218" font-size="10" transform="rotate(65 198 218)" opacity="0.9">V/m</text>
+    <text x="195" y="260" font-size="11" transform="rotate(115 195 260)" opacity="0.95">Q ≈ 15 C</text>
+    <text x="194" y="304" font-size="10" transform="rotate(70 194 304)" opacity="0.9">D ≈ 1.7</text>
+  </g>
+  <!-- Ground and strike glow -->
+  <rect y="372" width="400" height="28" fill="#06060c"/>
+  <ellipse cx="192" cy="372" rx="46" ry="12" fill="#b4aaff" opacity="0.35"/>
+  <ellipse cx="192" cy="372" rx="18" ry="5" fill="#ffffff" opacity="0.5"/>
+</svg>

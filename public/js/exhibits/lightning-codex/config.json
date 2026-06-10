@@ -1,0 +1,20 @@
+{
+  "id": "lightning-codex",
+  "title": "Lightning Codex",
+  "description": "A storm that thinks. Charge builds in the clouds while humanity's equations for lightning swirl inside them — and when the field exceeds breakdown, a fractal bolt strikes with its white-hot core written in the very mathematics that describes it: Maxwell, Townsend, Peek, thirty thousand kelvin.",
+  "category": "synthesis",
+  "library": "canvas",
+  "thumbnail": "/assets/thumbnails/lightning-codex.svg",
+  "tags": ["lightning", "physics", "mathematics", "fractal", "storm", "time-based", "interactive"],
+  "instructions": [
+    "Watch charge build in the clouds — the equations of lightning swirl inside them as the field intensifies.",
+    "When the breakdown threshold is reached, a strike discharges the knowledge down a fractal channel.",
+    "Move your cursor to position the lightning rod; click to call a strike down to it.",
+    "Look closely at a bolt's core: it is written in the formulas physics uses to describe it.",
+    "Adjust storm intensity and branching. Press Space to pause, R to reset."
+  ],
+  "controls": {
+    "pause": true,
+    "reset": true
+  }
+}
