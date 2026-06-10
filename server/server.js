@@ -28,6 +28,14 @@ app.use('/lib', express.static(libPath, {
   immutable: true
 }));
 
+// Serve exhibit assets (thumbnails) which live outside public/
+const assetsPath = join(__dirname, '..', 'assets');
+app.use('/assets', express.static(assetsPath, {
+  maxAge: '1h',
+  etag: true,
+  lastModified: true
+}));
+
 // SPA fallback - serve index.html for all routes
 // This enables clean URLs like /mandelbrot instead of /#/mandelbrot
 app.get('*', (req, res) => {
