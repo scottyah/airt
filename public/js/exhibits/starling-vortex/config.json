@@ -1,0 +1,20 @@
+{
+  "id": "starling-vortex",
+  "title": "Starling Vortex",
+  "description": "Thousands of starlings spiral through three dimensions, their plumage shimmering green to violet as they bank against the light — true iridescence, computed on the GPU. The flock breathes between free flight and a towering vortex.",
+  "category": "3d",
+  "library": "webgl2",
+  "thumbnail": "/assets/thumbnails/starling-vortex.svg",
+  "tags": ["flocking", "boids", "3d", "webgl", "shaders", "iridescent", "vortex", "interactive"],
+  "instructions": [
+    "Move your cursor into the flock — it hunts as a falcon in 3D space.",
+    "Click to detonate a shockwave through the vortex.",
+    "Watch the colors: birds shift green to violet depending on their angle to you, like real starling feathers.",
+    "Adjust vortex strength, flock size, and shimmer with the sliders.",
+    "Press Space to pause/resume, R to reset."
+  ],
+  "controls": {
+    "pause": true,
+    "reset": true
+  }
+}

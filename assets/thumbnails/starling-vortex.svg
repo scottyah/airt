@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <radialGradient id="sv-bg" cx="50%" cy="50%" r="75%">
+      <stop offset="0%" style="stop-color:#1a1030"/>
+      <stop offset="60%" style="stop-color:#0d0a22"/>
+      <stop offset="100%" style="stop-color:#05030f"/>
+    </radialGradient>
+    <linearGradient id="sv-irid" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4dff9a"/>
+      <stop offset="40%" style="stop-color:#4dc9ff"/>
+      <stop offset="75%" style="stop-color:#9a4dff"/>
+      <stop offset="100%" style="stop-color:#e04dff"/>
+    </linearGradient>
+    <path id="sv-bird" d="M-4,0 L4,0" stroke="url(#sv-irid)" stroke-width="2.4" stroke-linecap="round"/>
+  </defs>
+  <rect width="400" height="400" fill="url(#sv-bg)"/>
+  <!-- Stars -->
+  <g fill="#dcd7ff">
+    <circle cx="46" cy="44" r="1" opacity="0.6"/>
+    <circle cx="340" cy="62" r="1.2" opacity="0.7"/>
+    <circle cx="120" cy="28" r="0.8" opacity="0.5"/>
+    <circle cx="260" cy="36" r="0.7" opacity="0.4"/>
+    <circle cx="370" cy="160" r="0.8" opacity="0.5"/>
+    <circle cx="30" cy="210" r="0.7" opacity="0.4"/>
+    <circle cx="350" cy="330" r="1" opacity="0.6"/>
+    <circle cx="60" cy="350" r="0.8" opacity="0.5"/>
+  </g>
+  <!-- Spiral vortex of iridescent streaks: three turns, tighter and dimmer toward the top -->
+  <g opacity="0.95">
+    <g transform="translate(200,310)">
+      <use href="#sv-bird" transform="rotate(0) translate(118,0) rotate(90) scale(1.3)"/>
+      <use href="#sv-bird" transform="rotate(24) translate(122,0) rotate(90) scale(1.2)"/>
+      <use href="#sv-bird" transform="rotate(48) translate(115,0) rotate(90) scale(1.35)"/>
+      <use href="#sv-bird" transform="rotate(72) translate(125,0) rotate(90) scale(1.15)"/>
+      <use href="#sv-bird" transform="rotate(96) translate(119,0) rotate(90) scale(1.3)"/>
+      <use href="#sv-bird" transform="rotate(120) translate(112,0) rotate(90) scale(1.25)"/>
+      <use href="#sv-bird" transform="rotate(144) translate(121,0) rotate(90) scale(1.2)"/>
+      <use href="#sv-bird" transform="rotate(168) translate(116,0) rotate(90) scale(1.3)"/>
+      <use href="#sv-bird" transform="rotate(192) translate(124,0) rotate(90) scale(1.1)"/>
+      <use href="#sv-bird" transform="rotate(216) translate(113,0) rotate(90) scale(1.3)"/>
+      <use href="#sv-bird" transform="rotate(240) translate(120,0) rotate(90) scale(1.2)"/>
+      <use href="#sv-bird" transform="rotate(264) translate(117,0) rotate(90) scale(1.25)"/>
+      <use href="#sv-bird" transform="rotate(288) translate(123,0) rotate(90) scale(1.15)"/>
+      <use href="#sv-bird" transform="rotate(312) translate(114,0) rotate(90) scale(1.3)"/>
+      <use href="#sv-bird" transform="rotate(336) translate(120,0) rotate(90) scale(1.2)"/>
+    </g>
+    <g transform="translate(200,230)" opacity="0.85">
+      <use href="#sv-bird" transform="rotate(12) translate(86,0) rotate(90) scale(1.1)"/>
+      <use href="#sv-bird" transform="rotate(42) translate(90,0) rotate(90) scale(1)"/>
+      <use href="#sv-bird" transform="rotate(72) translate(83,0) rotate(90) scale(1.15)"/>
+      <use href="#sv-bird" transform="rotate(102) translate(88,0) rotate(90) scale(0.95)"/>
+      <use href="#sv-bird" transform="rotate(132) translate(85,0) rotate(90) scale(1.05)"/>
+      <use href="#sv-bird" transform="rotate(162) translate(91,0) rotate(90) scale(1)"/>
+      <use href="#sv-bird" transform="rotate(192) translate(84,0) rotate(90) scale(1.1)"/>
+      <use href="#sv-bird" transform="rotate(222) translate(89,0) rotate(90) scale(0.95)"/>
+      <use href="#sv-bird" transform="rotate(252) translate(86,0) rotate(90) scale(1.05)"/>
+      <use href="#sv-bird" transform="rotate(282) translate(90,0) rotate(90) scale(1)"/>
+      <use href="#sv-bird" transform="rotate(312) translate(85,0) rotate(90) scale(1.1)"/>
+      <use href="#sv-bird" transform="rotate(342) translate(88,0) rotate(90) scale(1)"/>
+    </g>
+    <g transform="translate(200,160)" opacity="0.7">
+      <use href="#sv-bird" transform="rotate(6) translate(58,0) rotate(90) scale(0.85)"/>
+      <use href="#sv-bird" transform="rotate(46) translate(61,0) rotate(90) scale(0.8)"/>
+      <use href="#sv-bird" transform="rotate(86) translate(56,0) rotate(90) scale(0.9)"/>
+      <use href="#sv-bird" transform="rotate(126) translate(60,0) rotate(90) scale(0.8)"/>
+      <use href="#sv-bird" transform="rotate(166) translate(57,0) rotate(90) scale(0.85)"/>
+      <use href="#sv-bird" transform="rotate(206) translate(62,0) rotate(90) scale(0.75)"/>
+      <use href="#sv-bird" transform="rotate(246) translate(58,0) rotate(90) scale(0.85)"/>
+      <use href="#sv-bird" transform="rotate(286) translate(61,0) rotate(90) scale(0.8)"/>
+      <use href="#sv-bird" transform="rotate(326) translate(59,0) rotate(90) scale(0.85)"/>
+    </g>
+    <g transform="translate(200,104)" opacity="0.55">
+      <use href="#sv-bird" transform="rotate(20) translate(34,0) rotate(90) scale(0.65)"/>
+      <use href="#sv-bird" transform="rotate(80) translate(36,0) rotate(90) scale(0.6)"/>
+      <use href="#sv-bird" transform="rotate(140) translate(33,0) rotate(90) scale(0.65)"/>
+      <use href="#sv-bird" transform="rotate(200) translate(37,0) rotate(90) scale(0.55)"/>
+      <use href="#sv-bird" transform="rotate(260) translate(34,0) rotate(90) scale(0.65)"/>
+      <use href="#sv-bird" transform="rotate(320) translate(36,0) rotate(90) scale(0.6)"/>
+    </g>
+    <g transform="translate(200,64)" opacity="0.4">
+      <use href="#sv-bird" transform="rotate(50) translate(16,0) rotate(90) scale(0.5)"/>
+      <use href="#sv-bird" transform="rotate(170) translate(18,0) rotate(90) scale(0.45)"/>
+      <use href="#sv-bird" transform="rotate(290) translate(17,0) rotate(90) scale(0.5)"/>
+    </g>
+  </g>
+  <!-- Vortex core glow -->
+  <ellipse cx="200" cy="230" rx="60" ry="130" fill="#7a4dff" opacity="0.07"/>
+</svg>
