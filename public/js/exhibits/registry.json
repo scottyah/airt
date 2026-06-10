@@ -47,6 +47,18 @@
     {
       "id": "murmuration",
       "enabled": true
+    },
+    {
+      "id": "starling-vortex",
+      "enabled": true
+    },
+    {
+      "id": "lightning-codex",
+      "enabled": true
+    },
+    {
+      "id": "infinite-horizon",
+      "enabled": true
     }
   ]
 }
