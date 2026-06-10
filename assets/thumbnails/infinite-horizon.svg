@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="ih-sky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0d0822"/>
+      <stop offset="55%" style="stop-color:#3d2058"/>
+      <stop offset="100%" style="stop-color:#d4694f"/>
+    </linearGradient>
+    <linearGradient id="ih-far" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#53276b"/>
+      <stop offset="100%" style="stop-color:#3a1c52"/>
+    </linearGradient>
+    <linearGradient id="ih-mid" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#a8488f"/>
+      <stop offset="100%" style="stop-color:#53276b"/>
+    </linearGradient>
+    <linearGradient id="ih-near" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#f4c9e0"/>
+      <stop offset="30%" style="stop-color:#a8488f"/>
+      <stop offset="100%" style="stop-color:#241543"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#ih-sky)"/>
+  <!-- Stars -->
+  <g fill="#fff6e0">
+    <circle cx="60" cy="36" r="1.1" opacity="0.8"/>
+    <circle cx="150" cy="58" r="0.8" opacity="0.6"/>
+    <circle cx="240" cy="30" r="1" opacity="0.7"/>
+    <circle cx="320" cy="70" r="0.8" opacity="0.5"/>
+    <circle cx="375" cy="40" r="1" opacity="0.7"/>
+    <circle cx="105" cy="92" r="0.7" opacity="0.4"/>
+    <circle cx="282" cy="98" r="0.6" opacity="0.4"/>
+  </g>
+  <!-- Setting sun with halo -->
+  <circle cx="140" cy="186" r="52" fill="#c9573f" opacity="0.4"/>
+  <circle cx="140" cy="186" r="26" fill="#ffb36b"/>
+  <!-- Terrain ridgelines, far to near -->
+  <path d="M0,210 L40,196 L85,206 L130,190 L180,202 L230,186 L275,200 L320,188 L365,198 L400,190 L400,400 L0,400 Z" fill="url(#ih-far)"/>
+  <path d="M0,258 L35,236 L80,252 L120,226 L170,248 L215,222 L265,246 L310,228 L355,244 L400,230 L400,400 L0,400 Z" fill="url(#ih-mid)"/>
+  <path d="M0,330 L45,290 L95,318 L150,278 L205,316 L255,282 L305,312 L355,286 L400,308 L400,400 L0,400 Z" fill="url(#ih-near)"/>
+  <!-- Wireframe shimmer on the near ridge -->
+  <g stroke="#ff7ad9" stroke-width="0.7" opacity="0.45" fill="none">
+    <path d="M0,330 L45,290 L95,318 L150,278 L205,316 L255,282 L305,312 L355,286 L400,308"/>
+    <path d="M0,352 L50,322 L100,344 L152,312 L208,342 L258,316 L308,338 L358,318 L400,334"/>
+    <path d="M0,376 L55,354 L105,370 L155,348 L210,368 L260,350 L310,364 L360,350 L400,360"/>
+    <path d="M45,290 L50,322 L55,354 M150,278 L152,312 L155,348 M255,282 L258,316 L260,350 M355,286 L358,318 L360,350"/>
+  </g>
+  <!-- The monolith on a far ridge -->
+  <rect x="296" y="206" width="6" height="24" fill="#05030a"/>
+  <rect x="297.5" y="208" width="3" height="20" fill="#8be0ff" opacity="0.5"/>
+</svg>

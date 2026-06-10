@@ -1,0 +1,20 @@
+{
+  "id": "infinite-horizon",
+  "title": "Infinite Horizon",
+  "description": "An endless flight over procedurally generated dusk terrain that is born just beyond the fog and dissolved behind you — no two minutes of it ever repeat. An homage to the legendary flight-simulator easter egg hidden in Excel 97. Watch for the monolith.",
+  "category": "3d",
+  "library": "three.js",
+  "thumbnail": "/assets/thumbnails/infinite-horizon.svg",
+  "tags": ["terrain", "procedural", "flight", "3d", "three.js", "landscape", "easter-egg", "interactive"],
+  "instructions": [
+    "Steer with your cursor: push toward a screen edge to bank and climb or dive.",
+    "Click and hold for a speed boost; use the slider to set cruise speed.",
+    "The terrain is generated on the fly from fractal noise — it is infinite and never repeats.",
+    "Toggle wireframe mode for the full retro flight-sim experience.",
+    "Somewhere out in the hills stands a monolith. Find it. Press Space to pause, R to reset."
+  ],
+  "controls": {
+    "pause": true,
+    "reset": true
+  }
+}
